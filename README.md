@@ -12,4 +12,13 @@
 - **Flink** : 분산 스트림 프로세싱
 
 ## 학습 아키텍쳐
-<img src="/architecture.png"  width="900" height="400">
+<img src="/images/architecture.png" width="900" height="400">
+
+## 스파크
+- 데이터 분석
+- Data Preprocessing
+- Hyper Parmeter 파이프라인
+- ML 예측 모델 학습 파이프라인
+<img src="/images/pickup_date.png">
+<img src="/images/pickup_weeks.png">
+<img src="/images/prediction.png">
