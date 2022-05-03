@@ -12,4 +12,4 @@
 - **Flink** : 분산 스트림 프로세싱
 
 ## 학습 아키텍쳐
-![아키텍쳐]('./architecture.png')
+<img src="/architecture.png"  width="900" height="400">
