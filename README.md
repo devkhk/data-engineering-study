@@ -14,7 +14,7 @@
 ## 학습 아키텍쳐
 <img src="/images/architecture.png" width="900" height="400">
 
-## 스파크
+## Spark
 - 데이터 분석
 - Data Preprocessing
 - Hyper Parmeter 파이프라인
@@ -36,4 +36,8 @@
   <img src="/images/prediction.png" alt="text"/>
 </p>
 
-## 에어플로우
+## Airflow
+- Data Preprocessing -> Train/Test 데이터 저장
+- Hyper Parameter 학습 -> 파라미터 csv 파일로 저장
+- Train Model -> 학습 된 모델을 저장
+- 위 과정을 에어플로우 DAG의 작업화(Task) 하고 의존성 추가

@@ -1,6 +1,6 @@
 #
 # 가공된 학습용 데이터를 불러와 Hyperparameter Tuning 
-# 튜닝된 hyperparameter 정보를 csv 파이로 저장
+# 튜닝된 hyperparameter 정보를 csv 파일로 저장
 # 로그 확인을 위해 print 함수를 사용
 #
 
