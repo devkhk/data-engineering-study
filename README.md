@@ -37,7 +37,8 @@
 </p>
 
 ## Airflow
-- Data Preprocessing -> Train/Test 데이터 저장
-- Hyper Parameter 학습 -> 파라미터 csv 파일로 저장
-- Train Model -> 학습 된 모델을 저장
-- 위 과정을 에어플로우 DAG의 작업화(Task) 하고 의존성 추가
+- 데이터 가공, 저장 파이프라인 DAG 설계 
+  - Data Preprocessing -> Train/Test 데이터 저장
+  - Hyper Parameter 학습 -> 파라미터 csv 파일로 저장
+  - Train Model -> 학습 된 모델을 저장
+  - 위 과정을 에어플로우 DAG의 작업화(Task) 하고 의존성 추가
