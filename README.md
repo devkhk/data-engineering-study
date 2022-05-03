@@ -18,7 +18,22 @@
 - 데이터 분석
 - Data Preprocessing
 - Hyper Parmeter 파이프라인
-- ML 예측 모델 학습 파이프라인
-<img src="/images/pickup_date.png">
-<img src="/images/pickup_weeks.png">
-<img src="/images/prediction.png">
+- ML 예측 모델 학습 파이프라인    
+
+<p align="center">
+  데이터 분석 - 날짜별 택시 이용
+  <br>
+  <img src="/images/pickup_date.png" width="900" height="300">
+</p>
+<p align="center">
+  데이터 분석 - 요일별 택시 이용
+  <br>
+  <img src="/images/pickup_weeks.png" width="900" height="300">
+</p>
+<p align="center">
+  학습 모델 예측 결과 값
+  <br>
+  <img src="/images/prediction.png" alt="text"/>
+</p>
+
+## 에어플로우
