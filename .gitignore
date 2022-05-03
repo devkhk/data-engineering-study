@@ -1,5 +1,6 @@
 .ipynb_checkpoints/
 .checkpoint/
+.DS_Store
 data/
 __pycache__
 *.csv
