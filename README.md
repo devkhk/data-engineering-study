@@ -56,3 +56,5 @@
 </p>
 
 ## Kafka
+- 스트리밍 데이터 처리 학습
+- Fraud Detection Sub Project
