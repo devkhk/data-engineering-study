@@ -43,3 +43,13 @@
   - Hyper Parameter 학습 -> 파라미터 csv 파일로 저장
   - Train Model -> 학습 된 모델을 저장
   - 위 과정을 에어플로우 DAG의 작업화(Task) 하고 의존성 추가
+<p align="center">
+  Airflow DAG tag 관리
+  <br>
+  <img src="/images/airflow-dags.png" width="900" height="300">
+</p>
+<p align="center">
+  Airflow DAG Depedency grpah 
+  <br>
+  <img src="/images/airflow-graph.png"/>
+</p>
