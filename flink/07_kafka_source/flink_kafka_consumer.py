@@ -32,7 +32,7 @@ t_env.get_config().get_configuration().set_string(
 
 schema = SimpleStringSchema()
 kafka_consumer = FlinkKafkaConsumer(
-    topics="flink-test",
+    topics="flink-test2",
     deserialization_schema=schema,
     properties={
         "bootstrap-server" : "localhost:9092",
@@ -57,7 +57,7 @@ t_env.execute_sql(
 
 # 데이터 스트림이 올때 테이블을 만들고 insert 해준다.
 table = t_env.from_data_stream(ds) 
-table.execute_insert("blackhole")
+# table.execute_insert("blackhole")
 
 
 ## flink 1.15v 부터 사용되지 않는 메서드가 많이 생김. 아래 코드는 확실치 않고 후에 확인 해 봐야함.
@@ -67,11 +67,11 @@ table.execute_insert("blackhole")
 t_stmt_set = t_env.create_statement_set()
 
 sink_descriptor = TableDescriptor.for_connector("blackhole")\
-                   .schema(Schema.new_builder()\
-                                 .column("data", DataTypes.STRING())\
-                                 .build())\
-                    .build()
-t_stmt_set.add_insert("blackhole",table)
+                                 .schema(Schema.new_builder()\
+                                                .column("data", DataTypes.STRING())\
+                                                .build())\
+                                 .build()
+t_stmt_set.add_insert(sink_descriptor, table)
 
 result = t_stmt_set.execute()
 print(result.print())
