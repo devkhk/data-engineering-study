@@ -5,9 +5,8 @@ from pyflink.common.serialization import SimpleStringSchema
 from pyflink.datastream import StreamExecutionEnvironment
 from pyflink.datastream.connectors import FlinkKafkaConsumer
 from pyflink.datastream.execution_mode import RuntimeExecutionMode
-from pyflink.table import StreamTableEnvironment, DataTypes
-from pyflink.table import TableDescriptor
-from pyflink.table import Schema
+from pyflink.table import StreamTableEnvironment
+
 
 # env 스트리밍 모드 정의
 env = StreamExecutionEnvironment.get_execution_environment()
