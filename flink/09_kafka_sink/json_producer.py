@@ -1,5 +1,5 @@
 #
-# 플링크에 데이터를 전달하기 위한 kafka producer - json
+# kafka producer - json
 #
 
 from kafka import KafkaProducer
