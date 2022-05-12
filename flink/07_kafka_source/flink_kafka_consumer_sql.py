@@ -48,10 +48,7 @@ sink_query = """
 t_env.execute_sql(sink_query) # 블랙홀 테이블 생성
 
 
-t_stmt_set = t_env.create_statement_set()
+# 아랫줄과 같은 내용이고 , execute_sql()은 쿼리문을 통해서 필터링 등등, 원하는 작업을 직접 수행할 수 있다.
+t_env.execute_sql("INSERT INTO blackhole SELECT framework, chapter FROM source").wait()
+# t_env.from_path("source").execute_insert("blackhole").wait()
 
-# 카프카에서 전달 받는 source로부터 blackhole 테이블에 insert한다.
-t_stmt_set.add_insert_sql("INSERT INTO blackhole SELECT framework, chapter FROM source")
-
-result = t_stmt_set.execute()
-print(result.print()) 
