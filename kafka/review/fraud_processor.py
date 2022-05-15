@@ -1,6 +1,7 @@
 # 비정상 거래로 확인되어 들어오는 데이터
 
 from kafka import KafkaConsumer
+from fraud_alarmbot import post_slack_message
 import json
 
 TOPIC = "fraud_payments"
@@ -10,14 +11,6 @@ consumer = KafkaConsumer(TOPIC, bootstrap_servers=brokers) # consumer
 
 for messages in consumer:
     message = json.loads(messages.value.decode("utf-8"))
-
-    # data = {
-    #     "date" : d,
-    #     "time" : t,
-    #     "method" : method, 
-    #     "to" : to,
-    #     "amount" : amount
-    # }
 
     date = message['date']
     time = message['time']
@@ -31,8 +24,13 @@ for messages in consumer:
         msg += " 비트코인 거래 /"
     
     if to == "stranger":
-        msg += " 미등록 계좌와 거래"
+        msg += " 미등록 계좌와 거래 /"
 
+    slack_message = f"""
+        비정상 거래로 의심되는 알람 / {date} {time} / 거래승인 {method} /{to}->{amount}\n
+        {msg}
+    """
     print(f"비정상 거래로 의심됩니다. / {date} {time} / 거래승인{method} /{to}->{amount} ")
     print(msg)
-    # code ...
+    post_slack_message("#이상거래-알림봇", slack_message)
+
