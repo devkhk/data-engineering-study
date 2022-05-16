@@ -9,7 +9,7 @@ from pyflink.table.expressions import col
 t_env = TableEnvironment.create(EnvironmentSettings.in_streaming_mode())
 t_env.get_config().get_configuration().set_string("parallelism.default", "1")
 
-trips_path = "tripsdata/sample_trips.csv"
+trips_path = "../tripsdata/sample_trips.csv"
 
 source_ddl = f"""
   create table sample_trips (

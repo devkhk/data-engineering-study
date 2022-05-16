@@ -9,7 +9,7 @@ from pyflink.table.expressions import col
 t_env = TableEnvironment.create(EnvironmentSettings.in_streaming_mode())
 t_env.get_config().get_configuration().set_string("parallelism.default", "1")
 
-input_path = "tripsdata/sample_trips.csv"
+input_path = "../tripsdata/sample_trips.csv"
 
 # 'csv.ignore-parse-errors' = 'true' 첫줄 헤더를 NaN으로 만들어준다.
 source_ddl = f"""
