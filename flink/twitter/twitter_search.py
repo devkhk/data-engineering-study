@@ -12,7 +12,7 @@ import tweepy
 query = "covid has:images -is:retweet"
 
 client = tweepy.Client(bearer_token=BEARER_TOKEN)
-response = client.search_recent_tweets(query=query, max_results=10)
+response = client.search_recent_tweets(query=query, max_results=10, tweet_fields=["lang"])
 
 for tweet in response.data:
-    print(tweet)
+    print(tweet.lang)
