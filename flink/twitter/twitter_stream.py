@@ -3,15 +3,26 @@ from twitter_api import (
 ) 
 
 import json
+import datetime
 import tweepy
+from kafka import KafkaProducer
+
+producer = KafkaProducer(bootstrap_servers=["localhost:9092"])
 
 class ProcessStream(tweepy.StreamingClient):
     def on_data(self, raw_data):
-        json_data = json.loads(raw_data)
-        
-        if json_data["data"]["lang"] and json_data["data"]["lang"] == "ko":
-            print(json_data)
+        origin_data = json.loads(raw_data)
+        data = origin_data['data']
+        if data.get("lang") and data["lang"] == "ko":
+            # print(data)
 
+            korean_tweet = {
+                "text" : data['text'],
+                "created_at": data["created_at"][:-1]
+            }
+            # 카프카 전송
+            producer.send("korean-tweets", json.dumps(korean_tweet).encode("utf-8"))
+            print(korean_tweet)
 
 def delete_all_rules(rules):
     # rules[0] : StreamRules Data
@@ -33,5 +44,5 @@ rules = client.get_rules()
 print(rules)
 
 # 스트림 실행
-client.filter(tweet_fields=["lang"])
+client.filter(tweet_fields=["lang", "created_at"])
 # client.filter(expansions=["author_id"], user_fields=["location"], tweet_fields=["lang"])
