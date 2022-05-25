@@ -26,10 +26,10 @@ class ProcessStream(tweepy.StreamingClient):
 
 def delete_all_rules(rules):
     # rules[0] : StreamRules Data
-    if rules is None or rules[0] is None:
+    if rules is None or rules.data is None:
         return None
-    # Stream Data : value, tag, id 순서
-    ids = list(map(lambda rule: rule[2], rules[0]))
+    stream_rules = rules.data
+    ids = list(map(lambda rule: rule.id, stream_rules))
     client.delete_rules(ids=ids)
 
 client = ProcessStream(BEARER_TOKEN) # 클라이언트 초기화
