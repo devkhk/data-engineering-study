@@ -6,7 +6,7 @@ from pyflink.table import (
     DataTypes
 )
 from pyflink.table.udf import udf
-
+from pyflink.common import Row
 
 env = StreamExecutionEnvironment.get_execution_environment()
 env.set_parallelism(1)
@@ -41,7 +41,8 @@ source_query = """
         tolls_amount DOUBLE,
         improvement_surcharge DOUBLE,
         total_amount DOUBLE,
-        congestion_surcharge DOUBLE
+        congestion_surcharge DOUBLE,
+        pickup_ts AS TO_TIMESTAMP(tpep_pickup_datetime)
     ) with (
         'connector' = 'kafka',
         'topic' = 'taxi-trips',
@@ -54,7 +55,10 @@ source_query = """
 
 sink_query = """
     CREATE TABLE sink (
-        tpep_pickup_datetime STRING
+        pickup_ts TIMESTAMP,
+        trip_distance DOUBLE,
+        trip_hour INT,
+        expeected_price DOUBLE
     ) with (
         'connector' = 'print'
     )
@@ -64,5 +68,27 @@ sink_query = """
 t_env.execute_sql(source_query)
 t_env.execute_sql(sink_query)
 
-t_env.from_path("trips").select("tpep_pickup_datetime").execute_insert("sink").wait()
+# t_env.from_path("trips").select("tpep_pickup_datetime").execute_insert("sink").wait()
 
+@udf(result_type=DataTypes.ROW([
+    DataTypes.FIELD("pickup_ts", DataTypes.TIMESTAMP(3)),
+    DataTypes.FIELD("trip_distance", DataTypes.DOUBLE()),
+    DataTypes.FIELD("trip_hour", DataTypes.INT()),
+    DataTypes.FIELD("expected_price", DataTypes.DOUBLE())
+]))
+def calc_price(row):
+    import pickle
+    import pandas as pd
+    with open("./model.pkl", mode="rb") as f:
+        lr_model = pickle.load(f)
+        pickup_ts, trip_distance = row
+        trip_hour = pickup_ts.hour
+        df = pd.DataFrame([[trip_hour, trip_distance]], columns=["trip_hour", "trip_distance"])
+        prediction = lr_model.predict(df) # numpy
+        return Row(pickup_ts, trip_distance, trip_hour, prediction[0])
+
+# 학습 모델을 udf로 불러와서 사용
+trips = t_env.from_path("trips")
+trips = trips.select(trips.pickup_ts, trips.trip_distance)
+trips = trips.map(calc_price).alias("pickup_ts", "trip_distance", "trip_hour", "expeected_price")
+trips.execute_insert("sink").wait()
