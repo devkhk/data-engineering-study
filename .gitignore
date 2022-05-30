@@ -4,5 +4,6 @@
 data/
 __pycache__
 *.csv
-fraud_alarmbot.py
+*.pkl
+slack_api.py
 twitter_api.py
