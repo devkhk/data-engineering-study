@@ -55,7 +55,7 @@ source_query = """
 
 sink_query = """
     CREATE TABLE sink (
-        pickup_ts TIMESTAMP,
+        pickup_ts TIMESTAMP(3),
         trip_distance DOUBLE,
         trip_hour INT,
         expeected_price DOUBLE
@@ -84,7 +84,7 @@ def calc_price(row):
         pickup_ts, trip_distance = row
         trip_hour = pickup_ts.hour
         df = pd.DataFrame([[trip_hour, trip_distance]], columns=["trip_hour", "trip_distance"])
-        prediction = lr_model.predict(df) # numpy
+        prediction = lr_model.predict(df) # numpy , 모델 예측 정보인 예상 가격 정보 리턴
         return Row(pickup_ts, trip_distance, trip_hour, prediction[0])
 
 # 학습 모델을 udf로 불러와서 사용
