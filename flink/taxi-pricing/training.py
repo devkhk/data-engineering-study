@@ -1,3 +1,6 @@
+# 배치 데이터 트레이닝 , 모델 저장
+# 모델 평가
+
 from datetime import datetime
 import pandas as pd
 from sklearn.model_selection import train_test_split
@@ -11,10 +14,11 @@ df = pd.read_csv(input_file, header=0)
 df = df.loc[ (df["total_amount"] < 20) & (df["trip_distance"] < 100)]
 
 distance = df["trip_distance"]
-hour = df["tpep_pickup_datetime"].map(
+trip_hour = df["tpep_pickup_datetime"].map(
     lambda x: datetime.strptime(x, "%Y-%m-%d %H:%M:%S").hour
 )
-data = pd.concat([hour, distance], axis=1)
+data = pd.concat([trip_hour, distance], axis=1)
+data.columns = ["trip_hour", "trip_distance"]
 
 target = df["total_amount"]
 
