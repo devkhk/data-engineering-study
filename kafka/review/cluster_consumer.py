@@ -1,4 +1,7 @@
 import json
+import logging
+import time
+import traceback
 from kafka import KafkaConsumer
 from kafka.structs import TopicPartition
 
@@ -21,13 +24,30 @@ for pt in consumer.partitions_for_topic(TOPIC):
 consumer.assign(partitions=partitions)
 
 # offset 설정
-consumer.seek(TopicPartition(TOPIC, 0), 5)
-consumer.seek(TopicPartition(TOPIC, 0), 7)
+# consumer.seek(TopicPartition(TOPIC, 0), 5)
+# consumer.seek(TopicPartition(TOPIC, 0), 7)
 
 # off-set 초기화
 # consumer.seek_to_beginning(*partitions)
 
-# consumer.poll()
+# consumer poll을 사용하는 방법
+try:
+    while True:
+        # 여기에서 poll을 한다. 
+        max_records = 10
 
-for message in consumer:
-    print(message.value)
+        for _, records in consumer.poll(max_records=max_records).items():
+            for record in records:
+                try:
+                    print(record.value)
+                except:
+                    logging.error(traceback.format_exc())
+                consumer.commit_async()
+                # time.sleep(0.5)
+finally:
+    consumer.commit()
+    consumer.close()
+
+
+# for message in consumer:
+#     print(message.value)
