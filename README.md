@@ -13,7 +13,7 @@
 - **Flink** : 분산 스트림 프로세싱
 
 ## 학습 아키텍쳐
-<img src="/images/architecture.png" width="900" height="400">
+<img src="https://github.com/devkhk/data-engineering-study/blob/main/images/architecture.png" width="900" height="400">
 
 ## Spark
 - 배치 데이터 분석
@@ -29,12 +29,12 @@
 <p align="center">
   데이터 분석 - 요일별 택시 이용
   <br>
-  <img src="/images/pickup_weeks.png" width="900" height="300">
+  <img src="https://github.com/devkhk/data-engineering-study/blob/main/images/pickup_weeks.png" width="900" height="300">
 </p>
 <p align="center">
   학습 모델 예측 결과 값
   <br>
-  <img src="/images/prediction.png" alt="text"/>
+  <img src="https://github.com/devkhk/data-engineering-study/blob/main/images/prediction.png" alt="text"/>
 </p>
 
 ## Airflow
@@ -46,13 +46,13 @@
 
 - Airflow DAG tag 관리
 <p align="center">
-  <img src="/images/airflow-dags.png">
+  <img src="https://github.com/devkhk/data-engineering-study/blob/main/images/airflow-dags.png">
 </p>
    
 <p align="center">
   Airflow DAG Depedency Grpah 
   <br>
-  <img src="/images/airflow-graph.png"/>
+  <img src="https://github.com/devkhk/data-engineering-study/blob/main/images/airflow-graph.png"/>
 </p>
 
 ## Kafka
@@ -62,13 +62,13 @@
 <p align="center">
   실시간 결재 정보 스트림
   <br>
-  <img src="/images/realtrime_fraud_detector.png"/>
+  <img src="https://github.com/devkhk/data-engineering-study/blob/main/images/realtrime_fraud_detector.png"/>
 </p>
 
 <p align="center">
   의심 거래 정황 Slack 알람봇
   <br>
-  <img src="/images/slack_alrambot.png"/>
+  <img src="https://github.com/devkhk/data-engineering-study/blob/main/images/slack_alrambot.png"/>
 </p>
 
 ## Flink
@@ -79,13 +79,13 @@
 <p align="center">
   카프카 + 플링크를 활용한 실시간 피드 단어 수 세기 Sub Project
   <br>
-  <img src="/images/twitter_word_count.png"/>
+  <img src="https://github.com/devkhk/data-engineering-study/blob/main/images/twitter_word_count.png"/>
 </p>
 
 <p align="center">
   배치 모델을 활용한 실시간 택시비 예측
   <br>
-  <img src="/images/prediction_taxi_price.png"/>
+  <img src="https://github.com/devkhk/data-engineering-study/blob/main/images/prediction_taxi_price.png"/>
 </p>
 
 ## 수료 링크
