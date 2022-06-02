@@ -90,3 +90,4 @@
 
 ## 수료 링크 & 기타
 [수료증명서](https://github.com/devkhk/data-engineering-study/blob/main/day1company.pdf)
+[학습 과정 기록 블로그](https://devkhk.tistory.com/category/Development/Data%20Egineering)
