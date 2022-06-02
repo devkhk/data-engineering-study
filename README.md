@@ -89,4 +89,4 @@
 </p>
 
 ## 수료 링크
-[수료증명서](./day1company.pdf)
+[수료증명서](https://github.com/devkhk/data-engineering-study/blob/main/day1company.pdf)
