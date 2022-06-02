@@ -16,7 +16,7 @@
 <img src="/images/architecture.png" width="900" height="400">
 
 ## Spark
-- 데이터 분석
+- 배치 데이터 분석
 - Data Preprocessing
 - Hyper Parmeter 파이프라인
 - ML 예측 모델 학습 파이프라인    
@@ -38,7 +38,7 @@
 </p>
 
 ## Airflow
-- 데이터 가공, 저장 파이프라인 DAG 설계 
+- 배치 데이터 가공, 저장 파이프라인 DAG 설계 
   - Data Preprocessing -> Train/Test 데이터 저장
   - Hyper Parameter 학습 -> 파라미터 csv 파일로 저장
   - Train Model -> 학습 된 모델을 저장
@@ -56,5 +56,37 @@
 </p>
 
 ## Kafka
-- 스트리밍 데이터 처리 학습
-- Fraud Detection Sub Project
+- 카프카 실시간 빅데이터 처리 실습
+- 카프카를 활용한 Fraud Detection Sub Project   
+   
+<p align="center">
+  실시간 결재 정보 스트림
+  <br>
+  <img src="/images/realtrime_fraud_detector.png"/>
+</p>
+
+<p align="center">
+  의심 거래 정황 Slack 알람봇
+  <br>
+  <img src="/images/slack_alrambot.png"/>
+</p>
+
+## Flink
+- 스트림 데이터 프로세싱 실습
+- 플링크를 활용한 Twitter API RealTime Stream Process Sub Project
+- 배치 데이터 모델을 실시간 택시비 예측에 사용하기
+
+<p align="center">
+  카프카 + 플링크를 활용한 실시간 피드 단어 수 세기 Sub Project
+  <br>
+  <img src="/images/twitter_word_count.png"/>
+</p>
+
+<p align="center">
+  배치 모델을 활용한 실시간 택시비 예측
+  <br>
+  <img src="/images/prediction_taxi_price.png"/>
+</p>
+
+## 수료 링크
+[수료증명서](./day1company.pdf)
