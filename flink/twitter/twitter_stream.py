@@ -39,7 +39,7 @@ rules = client.get_rules()
 delete_all_rules(rules)
 
 # 새로운 룰 추가
-client.add_rules(tweepy.StreamRule(value="Twitter"))
+client.add_rules(tweepy.StreamRule(value="BTS -is:retweet"))
 rules = client.get_rules()
 print(rules)
 
