@@ -24,7 +24,7 @@
 <p align="center">
   데이터 분석 - 날짜별 택시 이용
   <br>
-  <img src="/images/pickup_date.png" width="900" height="300">
+  <img src="https://github.com/devkhk/data-engineering-study/blob/main/images/pickup_date.png" width="900" height="300">
 </p>
 <p align="center">
   데이터 분석 - 요일별 택시 이용
