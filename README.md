@@ -19,7 +19,7 @@
 ## Spark
 - 배치 데이터 분석
 - Data Preprocessing
-- Hyper Parmeter 파이프라인
+- Hyper Parameter 파이프라인
 - ML 예측 모델 학습 파이프라인    
 
 <p align="center">
